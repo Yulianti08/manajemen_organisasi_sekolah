@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard Ketua Organisasi</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  background:#f4f7fc;
+}
+
+.header{
+  background:#1e3a5f;
+  color:white;
+  padding:25px 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.header h1{
+  font-size:28px;
+}
+
+.logout{
+  background:#e74c3c;
+  color:white;
+  text-decoration:none;
+  padding:10px 20px;
+  border-radius:8px;
+  transition:.3s;
+}
+
+.logout:hover{
+  background:#c0392b;
+}
+
+.container{
+  width:90%;
+  max-width:1200px;
+  margin:40px auto;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,.08);
+  margin-bottom:25px;
+}
+
+.card h2{
+  color:#1e3a5f;
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#666;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+table thead{
+  background:#3b82f6;
+  color:white;
+}
+
+table th{
+  padding:15px;
+  text-align:center;
+}
+
+table td{
+  padding:15px;
+  text-align:center;
+  border-bottom:1px solid #eee;
+}
+
+table tr:hover{
+  background:#f8fbff;
+}
+
+.status-pending{
+  color:#f39c12;
+  font-weight:bold;
+}
+
+.status-diterima{
+  color:#27ae60;
+  font-weight:bold;
+}
+
+.status-ditolak{
+  color:#e74c3c;
+  font-weight:bold;
+}
+
+.empty{
+  background:white;
+  padding:30px;
+  text-align:center;
+  border-radius:15px;
+  color:#777;
+  box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="header">
+
+  <h1>Dashboard Ketua Organisasi</h1>
+
+  <a href="/logout" class="logout">
+    Logout
+  </a>
+
+</div>
+
+<div class="container">
+
+  <div class="card">
+
+    <h2>
+      Organisasi <%= ketua.organisasiId.nama %>
+    </h2>
+
+    <p>
+      Daftar anggota yang mendaftar ke organisasi.
+    </p>
+
+  </div>
+
+  <% if(dataPendaftaran.length > 0){ %>
+
+  <table>
+
+    <thead>
+
+      <tr>
+        <th>Nama</th>
+        <th>Email</th>
+        <th>Kelas</th>
+        <th>Jurusan</th>
+        <th>Status</th>
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      <% dataPendaftaran.forEach(item => { %>
+
+      <tr>
+
+        <td><%= item.nama %></td>
+
+        <td><%= item.email %></td>
+
+        <td><%= item.kelas %></td>
+
+        <td><%= item.jurusan %></td>
+
+        <td>
+
+          <% if(item.status === 'pending'){ %>
+            <span class="status-pending">
+              ⏳ Pending
+            </span>
+          <% } %>
+
+          <% if(item.status === 'diterima'){ %>
+            <span class="status-diterima">
+              ✅ Diterima
+            </span>
+          <% } %>
+
+          <% if(item.status === 'ditolak'){ %>
+            <span class="status-ditolak">
+              ❌ Ditolak
+            </span>
+          <% } %>
+
+        </td>
+
+      </tr>
+
+      <% }) %>
+
+    </tbody>
+
+  </table>
+
+  <% } else { %>
+
+  <div class="empty">
+
+    Belum ada pendaftar.
+
+  </div>
+
+  <% } %>
+
+</div>
+
+</body>
+</html>

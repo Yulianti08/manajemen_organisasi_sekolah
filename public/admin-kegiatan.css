@@ -1,0 +1,408 @@
+/* ================= NAVBAR ================= */
+
+.navbar{
+  background:#243447;
+  color:white;
+  padding:22px 40px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.navbar-left h2{
+  font-size:32px;
+  font-weight:700;
+}
+
+.navbar-right{
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
+}
+
+.navbar-right a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+  position:relative;
+}
+
+.navbar-right a:hover{
+  color:#93c5fd;
+}
+
+.navbar-right a.active{
+  color:#93c5fd;
+}
+
+.navbar-right a.active::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-8px;
+
+  width:100%;
+  height:3px;
+
+  background:#60a5fa;
+  border-radius:10px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI",sans-serif;
+}
+
+body{
+  background:#eef2f7;
+  color:#1e293b;
+}
+
+/* ================= HEADER ================= */
+
+.admin-topbar{
+  width:100%;
+  background:linear-gradient(90deg,#1e3a8a,#2563eb);
+  padding:18px 40px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+.admin-topbar h1{
+  color:white;
+  font-size:32px;
+  font-weight:800;
+}
+
+/* ================= CONTAINER ================= */
+
+.admin-container{
+  width:92%;
+  max-width:1350px;
+  margin:40px auto;
+}
+
+/* ================= CARD ================= */
+
+.admin-card{
+  background:white;
+  border-radius:28px;
+  padding:35px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.06);
+  margin-bottom:35px;
+}
+
+.admin-title{
+  font-size:36px;
+  color:#1e3a8a;
+  margin-bottom:12px;
+  font-weight:800;
+}
+
+.admin-subtitle{
+  color:#64748b;
+  margin-bottom:35px;
+  line-height:1.7;
+  font-size:15px;
+}
+
+/* ================= FORM ================= */
+
+.admin-form{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:18px;
+  align-items:start;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+}
+
+.form-group label{
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:10px;
+  color:#334155;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  padding:15px;
+  border-radius:16px;
+  border:1px solid #cbd5e1;
+  background:#f8fafc;
+  font-size:15px;
+  transition:0.3s;
+}
+
+.form-group textarea{
+  min-height:120px;
+  resize:none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+  outline:none;
+  border-color:#2563eb;
+  box-shadow:0 0 0 4px rgba(37,99,235,0.1);
+  background:white;
+}
+
+/* ================= FILE ================= */
+
+.file-upload{
+  background:#f8fafc;
+  border:2px dashed #94a3b8;
+  border-radius:18px;
+  padding:25px;
+  text-align:center;
+  transition:0.3s;
+}
+
+.file-upload:hover{
+  border-color:#2563eb;
+  background:#eff6ff;
+}
+
+.file-upload input{
+  width:100%;
+}
+
+/* ================= BUTTON ================= */
+
+.btn-submit{
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:16px 24px;
+  border-radius:16px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 10px 20px rgba(37,99,235,0.2);
+}
+
+.btn-submit:hover{
+  background:#1d4ed8;
+  transform:translateY(-3px);
+}
+
+/* ================= TABLE ================= */
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+.admin-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:20px;
+}
+
+.admin-table thead{
+  background:#2563eb;
+  color:white;
+}
+
+.admin-table th{
+  padding:18px;
+  font-size:15px;
+  text-align:left;
+}
+
+.admin-table td{
+  padding:18px;
+  border-bottom:1px solid #e2e8f0;
+  vertical-align:top;
+  font-size:14px;
+}
+
+.admin-table tbody tr{
+  transition:0.3s;
+}
+
+.admin-table tbody tr:hover{
+  background:#f8fafc;
+}
+
+/* ================= IMAGE ================= */
+
+.activity-images{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.activity-images img{
+  width:90px;
+  height:90px;
+  object-fit:cover;
+  border-radius:14px;
+  border:3px solid #dbeafe;
+  transition:0.3s;
+}
+
+.activity-images img:hover{
+  transform:scale(1.05);
+}
+
+/* ================= BADGE ================= */
+
+.badge-org{
+  background:#dbeafe;
+  color:#1d4ed8;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  display:inline-block;
+}
+
+/* ================= ACTION ================= */
+
+.btn-delete{
+  display:inline-block;
+  background:#ef4444;
+  color:white;
+  padding:10px 16px;
+  border-radius:12px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  transition:0.3s;
+}
+
+.btn-delete:hover{
+  background:#dc2626;
+  transform:translateY(-2px);
+}
+
+/* ================= EMPTY ================= */
+
+.empty-box{
+  background:#f8fafc;
+  border:2px dashed #cbd5e1;
+  border-radius:20px;
+  padding:40px;
+  text-align:center;
+  color:#64748b;
+  margin-top:20px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  .admin-topbar{
+    padding:18px 20px;
+  }
+
+  .admin-topbar h1{
+    font-size:24px;
+  }
+
+  .admin-card{
+    padding:25px 18px;
+  }
+
+  .admin-title{
+    font-size:28px;
+  }
+
+  .admin-form{
+    grid-template-columns:1fr;
+  }
+
+  .admin-table th,
+  .admin-table td{
+    padding:14px;
+    font-size:13px;
+  }
+
+  .activity-images img{
+    width:75px;
+    height:75px;
+  }
+
+}
+/* ================= TOPBAR ================= */
+
+.admin-topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 40px;
+  background:linear-gradient(
+    135deg,
+    #1d4ed8,
+    #2563eb
+  );
+  color:white;
+}
+
+.admin-topbar h1{
+  font-size:34px;
+  font-weight:800;
+}
+
+.btn-back{
+  background:white;
+  color:#1d4ed8;
+  text-decoration:none;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:700;
+  transition:0.3s;
+}
+
+.btn-back:hover{
+  transform:translateY(-2px);
+  background:#dbeafe;
+}
+
+/* ================= ACTION BUTTON ================= */
+
+.action-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.btn-edit,
+.btn-delete{
+  padding:10px 16px;
+  border-radius:10px;
+  text-decoration:none;
+  color:white;
+  font-weight:700;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.btn-edit{
+  background:#2563eb;
+}
+
+.btn-edit:hover{
+  background:#1d4ed8;
+}
+
+.btn-delete{
+  background:#ef4444;
+}
+
+.btn-delete:hover{
+  background:#dc2626;
+}

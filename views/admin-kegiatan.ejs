@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Admin Kegiatan</title>
+
+  <link rel="stylesheet" href="/admin-kegiatan.css">
+
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <header class="navbar">
+
+    <div class="navbar-left">
+
+      <h2>
+        Admin Panel
+      </h2>
+
+    </div>
+
+    <div class="navbar-right">
+
+      <a href="/admin">
+        Dashboard
+      </a>
+
+      <a href="/admin/pendaftaran">
+        Pendaftaran
+      </a>
+
+      <a href="/admin/users">
+        Users
+      </a>
+
+      <a href="/admin/organisasi">
+        Organisasi
+      </a>
+
+      <a
+        href="/admin/kegiatan"
+        class="active"
+      >
+        Kegiatan
+      </a>
+
+      <a href="/logout">
+        Logout
+      </a>
+
+    </div>
+
+  </header>
+
+  <!-- ================= CONTAINER ================= -->
+
+  <div class="admin-container">
+
+    <!-- ================= FORM ================= -->
+
+    <div class="admin-card">
+
+      <h2 class="admin-title">
+        Kelola Kegiatan
+      </h2>
+
+      <p class="admin-subtitle">
+        Tambahkan dokumentasi kegiatan organisasi sekolah
+        lengkap dengan beberapa foto kegiatan.
+      </p>
+
+      <form
+        action="/admin/tambah-kegiatan"
+        method="POST"
+        enctype="multipart/form-data"
+        class="admin-form"
+      >
+
+        <div class="form-group">
+
+          <label>
+            Pilih Organisasi
+          </label>
+
+          <select
+            name="organisasi"
+            required
+          >
+
+            <% dataOrganisasi.forEach(function(org){ %>
+
+              <option value="<%= org.nama %>">
+                <%= org.nama %>
+              </option>
+
+            <% }) %>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>
+            Judul Kegiatan
+          </label>
+
+          <input
+            type="text"
+            name="judul"
+            placeholder="Masukkan judul kegiatan"
+            required
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label>
+            Tanggal Kegiatan
+          </label>
+
+          <input
+            type="date"
+            name="tanggal"
+          >
+
+        </div>
+
+        <div
+          class="form-group"
+          style="grid-column:1/-1;"
+        >
+
+          <label>
+            Deskripsi Kegiatan
+          </label>
+
+          <textarea
+            name="deskripsi"
+            placeholder="Masukkan deskripsi kegiatan"
+            required
+          ></textarea>
+
+        </div>
+
+        <div
+          class="form-group"
+          style="grid-column:1/-1;"
+        >
+
+          <label>
+            Upload Foto Kegiatan
+          </label>
+
+          <div class="file-upload">
+
+            <input
+              type="file"
+              name="gambar"
+              multiple
+            >
+
+          </div>
+
+        </div>
+
+        <div
+          class="form-group"
+          style="grid-column:1/-1;"
+        >
+
+          <button
+            type="submit"
+            class="btn-submit"
+          >
+            Tambah Kegiatan
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+    <!-- ================= DATA KEGIATAN ================= -->
+
+    <div class="admin-card">
+
+      <h2 class="admin-title">
+        Data Kegiatan
+      </h2>
+
+      <p class="admin-subtitle">
+        Daftar seluruh kegiatan organisasi yang sudah ditambahkan admin.
+      </p>
+
+      <% if(dataKegiatan.length > 0){ %>
+
+        <div class="table-wrap">
+
+          <table class="admin-table">
+
+            <thead>
+
+              <tr>
+
+                <th>Organisasi</th>
+                <th>Judul</th>
+                <th>Deskripsi</th>
+                <th>Foto</th>
+                <th>Aksi</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+              <% dataKegiatan.forEach(function(item){ %>
+
+                <tr>
+
+                  <td>
+
+                    <span class="badge-org">
+                      <%= item.organisasi %>
+                    </span>
+
+                  </td>
+
+                  <td>
+
+                    <strong>
+                      <%= item.judul %>
+                    </strong>
+
+                    <% if(item.tanggal){ %>
+
+                      <br><br>
+
+                      📅 <%= item.tanggal %>
+
+                    <% } %>
+
+                  </td>
+
+                  <td>
+                    <%= item.deskripsi %>
+                  </td>
+
+                  <td>
+
+                    <div class="activity-images">
+
+                      <% item.gambar.forEach(function(foto){ %>
+
+                        <img
+                          src="<%= foto %>"
+                          alt="Foto Kegiatan"
+                        >
+
+                      <% }) %>
+
+                    </div>
+
+                  </td>
+
+                  <td>
+
+                    <div class="action-buttons">
+
+                      <a
+                        href="/admin/edit-kegiatan/<%= item._id %>"
+                        class="btn-edit"
+                      >
+                        ✏️ Edit
+                      </a>
+
+                      <a
+                        href="/admin/hapus-kegiatan/<%= item._id %>"
+                        class="btn-delete"
+                        onclick="return confirm('Yakin ingin menghapus kegiatan ini?')"
+                      >
+                        🗑 Hapus
+                      </a>
+
+                    </div>
+
+                  </td>
+
+                </tr>
+
+              <% }) %>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      <% } else { %>
+
+        <div class="empty-box">
+
+          <h3>
+            Belum Ada Kegiatan
+          </h3>
+
+          <br>
+
+          <p>
+            Data kegiatan organisasi masih kosong.
+          </p>
+
+        </div>
+
+      <% } %>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

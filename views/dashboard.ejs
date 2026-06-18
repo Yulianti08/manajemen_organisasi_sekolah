@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+  <header class="dashboard-topbar">
+
+    <div class="dashboard-topbar-inner">
+
+      <div class="dashboard-brand">
+
+        <img
+          src="/logo.png"
+          alt="Logo Sekolah"
+          class="dashboard-brand-logo"
+        >
+
+        <div class="dashboard-brand-text">
+          <h1>SMK BINA LATIH KARYA</h1>
+          <span>Website Organisasi Sekolah</span>
+        </div>
+
+      </div>
+
+      <div class="dashboard-right">
+
+        <div class="dashboard-menu-wrap">
+
+          <button
+            class="dashboard-menu-btn"
+            onclick="toggleDashboardMenu()"
+          >
+            ☰
+          </button>
+
+          <div
+            class="dashboard-menu-dropdown"
+            id="dashboardMenu"
+          >
+
+            <a href="/dashboard">Beranda</a>
+
+            <a href="/profil">Profil Saya</a>
+
+            <a href="/edit-profil">Edit Profil</a>
+
+            <a href="/organisasi">Organisasi</a>
+
+            <a href="/kegiatan">Kegiatan</a>
+
+            <a href="/pendaftaran">Pendaftaran</a>
+
+            <a href="/logout" class="menu-logout">
+              Logout
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <nav class="dashboard-nav">
+
+    <div class="dashboard-nav-inner">
+
+      <a href="/dashboard" class="active">
+        Beranda
+      </a>
+
+      <a href="/organisasi">
+        Organisasi
+      </a>
+
+      <a href="/kegiatan">
+        Kegiatan
+      </a>
+
+      <a href="/pendaftaran">
+        Pendaftaran
+      </a>
+
+    </div>
+
+  </nav>
+
+  <main class="dashboard-main">
+
+    <section class="dashboard-hero-clean">
+
+      <h2>
+        Selamat Datang, <%= user.nama %>
+      </h2>
+
+      <p>
+        Selamat datang di sistem Manajemen Anggota Organisasi Sekolah.
+        Di sini kamu bisa melihat daftar organisasi, kegiatan yang tersedia,
+        dan melakukan pendaftaran secara online dengan lebih mudah.
+      </p>
+
+      <div class="dashboard-actions">
+
+        <a
+          href="/organisasi"
+          class="dashboard-btn primary"
+        >
+          Lihat Organisasi
+        </a>
+
+        <a
+          href="/pendaftaran"
+          class="dashboard-btn secondary"
+        >
+          Pendaftaran
+        </a>
+
+      </div>
+
+    </section>
+
+    <section class="dashboard-section">
+
+      <div class="dashboard-section-title">
+
+        <h3>
+          Organisasi Tersedia
+        </h3>
+
+      </div>
+
+      <div class="dashboard-org-grid">
+
+        <% if(dataOrganisasi.length > 0){ %>
+
+          <% dataOrganisasi.forEach(function(org){ %>
+
+            <article class="dashboard-org-card">
+
+              <div class="dashboard-org-top">
+
+                <div class="dashboard-org-logo-wrap">
+
+                  <img
+                    src="<%= org.gambar %>"
+                    alt="<%= org.nama %>"
+                    class="dashboard-org-logo"
+                  >
+
+                </div>
+
+                <div>
+
+                  <h4>
+                    <%= org.nama %>
+                  </h4>
+
+                  <p>
+                    <%= org.deskripsi %>
+                  </p>
+
+                </div>
+
+              </div>
+
+              <a
+                href="/organisasi"
+                class="dashboard-org-link"
+              >
+                Lihat detail
+              </a>
+
+            </article>
+
+          <% }) %>
+
+        <% } else { %>
+
+          <div class="dashboard-empty">
+
+            <p>
+              Belum ada organisasi tersedia.
+            </p>
+
+          </div>
+
+        <% } %>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+
+    function toggleDashboardMenu() {
+
+      document
+      .getElementById('dashboardMenu')
+      .classList.toggle('show');
+
+    }
+
+    window.addEventListener('click', function (e) {
+
+      const wrap =
+      document.querySelector('.dashboard-menu-wrap');
+
+      if (!wrap.contains(e.target)) {
+
+        document
+        .getElementById('dashboardMenu')
+        .classList.remove('show');
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>

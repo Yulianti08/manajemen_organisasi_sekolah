@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Pendaftaran</title>
+  <link rel="stylesheet" href="/adminstyle.css">
+</head>
+
+<body>
+
+<%- include('partials/admin-navbar') %>
+
+<div class="admin-container">
+  <h2>Data Pendaftaran</h2>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Organisasi</th>
+          <th>Alasan</th> <!-- 🔥 TAMBAHAN -->
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <% if(data.length === 0){ %>
+          <tr>
+            <td colspan="5">Belum ada data</td>
+          </tr>
+        <% } %>
+
+        <% data.forEach(item => { %>
+          <tr>
+            <td><%= item.nama %></td>
+            <td><%= item.organisasi %></td>
+
+            <!-- 🔥 TAMPILKAN ALASAN -->
+            <td><%= item.alasan %></td>
+
+            <td>
+              <% if(item.status === 'diterima'){ %>
+                <span class="badge success">✅ Diterima</span>
+
+              <% } else if(item.status === 'ditolak'){ %>
+                <span class="badge reject">❌ Ditolak</span>
+
+              <% } else { %>
+                <span class="badge pending">⏳ Menunggu</span>
+              <% } %>
+            </td>
+
+            <td>
+              <a href="/admin/acc/<%= item._id %>" class="btn success">ACC</a>
+              <a href="/admin/tolak/<%= item._id %>" class="btn danger">Tolak</a>
+              <a href="/admin/hapus/<%= item._id %>" class="btn delete">Hapus</a>
+            </td>
+          </tr>
+        <% }) %>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

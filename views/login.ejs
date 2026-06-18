@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container-split">
+    <div class="left-panel">
+      <h1>SMK Bina Latih Karya</h1>
+
+
+  <p>
+    Sistem Manajemen Anggota Organisasi Sekolah yang membantu siswa memilih,
+    mengenal, dan bergabung dengan organisasi secara online dengan mudah,
+    cepat, dan terstruktur.
+  </p>
+
+  <div class="badge">
+    Website Manajemen Anggota Organisasi Sekolah
+  </div>
+</div>
+
+<div class="right-panel">
+  <div class="form-box">
+
+    <h2>Login</h2>
+    <p class="subtitle">Masuk ke akun kamu</p>
+
+    <% if (pesan) { %>
+      <div class="error">
+        <%= pesan %>
+      </div>
+    <% } %>
+
+    <form action="/login" method="POST">
+
+      <label>Email / Username</label>
+
+      <input
+        type="text"
+        name="email"
+        placeholder="Masukkan email atau username"
+        required
+      >
+
+      <label>Password</label>
+
+      <input
+        type="password"
+        name="password"
+        placeholder="Masukkan password"
+        required
+      >
+
+      <button type="submit">
+        Login
+      </button>
+
+    </form>
+
+    <div class="bottom-text">
+      Belum punya akun?
+      <a href="/register">Register</a>
+    </div>
+
+  </div>
+</div>
+
+
+  </div>
+</body>
+</html>

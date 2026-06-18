@@ -1,0 +1,152 @@
+.profil-box{
+  display:flex;
+  align-items:flex-start;
+  gap:35px;
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+  border-radius:24px;
+  padding:35px;
+  margin-top:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.04);
+}
+
+.profil-avatar{
+  flex-shrink:0;
+}
+
+.profil-avatar img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+  border:5px solid #2563eb;
+  box-shadow:0 12px 25px rgba(37,99,235,0.25);
+  transition:0.3s;
+}
+
+.profil-avatar img:hover{
+  transform:scale(1.04);
+}
+
+.profil-data{
+  flex:1;
+  width:100%;
+}
+
+.profil-row{
+  margin-bottom:24px;
+  padding-bottom:18px;
+  border-bottom:1px solid #e2e8f0;
+}
+
+.profil-row:last-child{
+  margin-bottom:0;
+  padding-bottom:0;
+  border-bottom:none;
+}
+
+.profil-row label{
+  display:block;
+  font-size:14px;
+  font-weight:600;
+  color:#64748b;
+  margin-bottom:8px;
+}
+
+.profil-value{
+  font-size:20px;
+  font-weight:700;
+  color:#0f172a;
+  word-break:break-word;
+}
+
+.section-head h3{
+  font-size:36px;
+  color:#1e3a8a;
+  margin-bottom:10px;
+  font-weight:800;
+}
+
+.section-head p{
+  color:#64748b;
+  font-size:16px;
+  line-height:1.6;
+}
+
+.status-active{
+  color:#16a34a;
+  font-weight:700;
+}
+
+.form-actions{
+  display:flex;
+  gap:18px;
+  margin-top:35px;
+  flex-wrap:wrap;
+}
+
+.btn-submit,
+.btn-secondary{
+  padding:14px 28px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:700;
+  transition:0.3s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.btn-submit{
+  background:#2563eb;
+  color:white;
+  box-shadow:0 8px 20px rgba(37,99,235,0.2);
+}
+
+.btn-submit:hover{
+  background:#1d4ed8;
+  transform:translateY(-3px);
+}
+
+.btn-secondary{
+  background:#e2e8f0;
+  color:#1e293b;
+}
+
+.btn-secondary:hover{
+  background:#cbd5e1;
+  transform:translateY(-3px);
+}
+
+@media(max-width:768px){
+
+  .profil-box{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+  }
+
+  .profil-avatar img{
+    width:120px;
+    height:120px;
+  }
+
+  .profil-data{
+    width:100%;
+  }
+
+  .profil-row{
+    text-align:left;
+  }
+
+  .form-actions{
+    flex-direction:column;
+  }
+
+  .btn-submit,
+  .btn-secondary{
+    width:100%;
+  }
+
+}

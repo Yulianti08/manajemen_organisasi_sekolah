@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Saya</title>
+
+  <link rel="stylesheet" href="/pendaftaran.css">
+  <link rel="stylesheet" href="/profil-page.css">
+</head>
+
+<body>
+
+  <header class="reg-topbar">
+
+    <div class="reg-topbar-inner">
+
+      <div class="reg-brand">
+
+        <img src="/logo.png" alt="Logo Sekolah" class="reg-logo">
+
+        <div class="reg-brand-text">
+          <h1>SMK BINA LATIH KARYA</h1>
+          <span>Website Organisasi Sekolah</span>
+        </div>
+
+      </div>
+
+      <div class="reg-menu-area">
+
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+        <div class="dropdown-menu" id="menuDropdown">
+          <a href="/dashboard">Beranda</a>
+          <a href="/profil">Profil Saya</a>
+          <a href="/edit-profil">Edit Profil</a>
+          <a href="/organisasi">Organisasi</a>
+          <a href="/kegiatan">Kegiatan</a>
+          <a href="/pendaftaran">Pendaftaran</a>
+          <a href="/pendaftaran-saya">Pendaftaran Saya</a>
+          <a href="/logout" class="logout">Logout</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <nav class="reg-nav">
+
+    <div class="reg-nav-inner">
+      <a href="/dashboard">Beranda</a>
+      <a href="/organisasi">Organisasi</a>
+      <a href="/kegiatan">Kegiatan</a>
+      <a href="/profil" class="active">Profil</a>
+    </div>
+
+  </nav>
+
+  <main class="reg-container">
+
+    <section class="reg-hero">
+
+      <span class="hero-badge">Profil Siswa</span>
+
+      <h2>Data Profil Saya</h2>
+
+      <p>
+        Berikut adalah informasi akun yang kamu gunakan
+        untuk masuk ke sistem.
+      </p>
+
+    </section>
+
+    <section class="reg-form-section">
+
+      <div class="reg-form-card">
+
+        <div class="section-head">
+
+          <h3>Informasi Profil</h3>
+
+          <p>
+            Data akun yang tersimpan di sistem organisasi sekolah.
+          </p>
+
+        </div>
+
+        <div class="profil-box">
+
+          <div class="profil-avatar">
+
+            <% if(userData.foto){ %>
+
+              <img src="<%= userData.foto %>" alt="Foto Profil">
+
+            <% } else { %>
+
+              <img src="/default.png" alt="Default">
+
+            <% } %>
+
+          </div>
+
+          <div class="profil-data">
+
+            <div class="profil-row">
+
+              <label>Nama Lengkap</label>
+
+              <div class="profil-value">
+                <%= userData.nama %>
+              </div>
+
+            </div>
+
+            <div class="profil-row">
+
+              <label>Email</label>
+
+              <div class="profil-value">
+                <%= userData.email %>
+              </div>
+
+            </div>
+
+            <div class="profil-row">
+
+              <label>ID Pengguna</label>
+
+              <div class="profil-value">
+                <%= userData._id %>
+              </div>
+
+            </div>
+
+            <div class="profil-row">
+
+              <label>Status Akun</label>
+
+              <div class="profil-value status-active">
+                ✅ Aktif
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="form-actions">
+
+          <a href="/edit-profil" class="btn-secondary">
+            ✏️ Edit Profil
+          </a>
+
+          <a href="/dashboard" class="btn-submit">
+            ← Kembali ke Dashboard
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+
+    function toggleMenu() {
+
+      document
+      .getElementById("menuDropdown")
+      .classList.toggle("show");
+
+    }
+
+    window.addEventListener("click", function (e) {
+
+      const wrap =
+      document.querySelector(".reg-menu-area");
+
+      if (!wrap.contains(e.target)) {
+
+        document
+        .getElementById("menuDropdown")
+        .classList.remove("show");
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>

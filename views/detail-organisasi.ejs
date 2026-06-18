@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    <%= organisasi.nama %>
+  </title>
+
+  <link rel="stylesheet" href="/detail-organisasi.css">
+
+</head>
+
+<body>
+
+  <header class="topbar">
+
+    <div class="topbar-inner">
+
+      <div class="brand">
+
+        <img
+          src="/logo.png"
+          class="logo"
+        >
+
+        <div>
+
+          <h1>
+            SMK BINA LATIH KARYA
+          </h1>
+
+          <span>
+            Website Organisasi Sekolah
+          </span>
+
+        </div>
+
+      </div>
+
+      <a
+        href="/organisasi"
+        class="back-btn"
+      >
+        ← Kembali
+      </a>
+
+    </div>
+
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+
+      <img
+        src="<%= organisasi.gambar %>"
+        class="hero-image"
+      >
+
+      <div class="hero-content">
+
+        <span class="badge">
+          Organisasi Sekolah
+        </span>
+
+        <h2>
+          <%= organisasi.nama %>
+        </h2>
+
+        <p>
+          <%= organisasi.deskripsi %>
+        </p>
+
+      </div>
+
+    </section>
+
+    <section class="section-title">
+
+      <h3>
+        Kegiatan <%= organisasi.nama %>
+      </h3>
+
+      <p>
+        Dokumentasi kegiatan organisasi.
+      </p>
+
+    </section>
+
+    <div class="kegiatan-grid">
+
+      <% if(dataKegiatan.length > 0){ %>
+
+        <% dataKegiatan.forEach(function(item){ %>
+
+          <div class="card">
+
+            <div class="foto-grid">
+
+              <% if(item.gambar.length > 0){ %>
+
+                <% item.gambar.forEach(function(foto){ %>
+
+                  <img
+                    src="<%= foto %>"
+                    class="foto"
+                  >
+
+                <% }) %>
+
+              <% } %>
+
+            </div>
+
+            <div class="card-content">
+
+              <span class="label">
+                <%= item.organisasi %>
+              </span>
+
+              <h4>
+                <%= item.judul %>
+              </h4>
+
+              <p>
+                <%= item.deskripsi %>
+              </p>
+
+              <div class="tanggal">
+                📅 <%= item.tanggal %>
+              </div>
+
+            </div>
+
+          </div>
+
+        <% }) %>
+
+      <% } else { %>
+
+        <div class="empty">
+
+          Belum ada kegiatan.
+
+        </div>
+
+      <% } %>
+
+    </div>
+
+  </main>
+
+</body>
+</html>

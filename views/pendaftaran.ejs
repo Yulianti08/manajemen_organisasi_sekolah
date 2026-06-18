@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pendaftaran Organisasi</title>
+  <link rel="stylesheet" href="/pendaftaran.css">
+</head>
+<body>
+
+  <header class="reg-topbar">
+    <div class="reg-topbar-inner">
+      <div class="reg-brand">
+        <img src="/logo.png" alt="Logo Sekolah" class="reg-logo">
+        <div class="reg-brand-text">
+          <h1>SMK BINA LATIH KARYA</h1>
+          <span>Website Organisasi Sekolah</span>
+        </div>
+      </div>
+
+      <div class="reg-menu-area">
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+        <div class="dropdown-menu" id="menuDropdown">
+          <a href="/dashboard">Beranda</a>
+          <a href="/profil">Profil Saya</a>
+          <a href="/organisasi">Organisasi</a>
+          <a href="/kegiatan">Kegiatan</a>
+          <a href="/pendaftaran">Pendaftaran</a>
+          <a href="/pendaftaran-saya">Pendaftaran Saya</a>
+          <a href="/logout" class="logout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="reg-nav">
+    <div class="reg-nav-inner">
+      <a href="/dashboard">Beranda</a>
+      <a href="/organisasi">Organisasi</a>
+      <a href="/kegiatan">Kegiatan</a>
+      <a href="/pendaftaran" class="active">Pendaftaran</a>
+    </div>
+  </nav>
+
+  <main class="reg-container">
+
+    <section class="reg-hero">
+      <span class="hero-badge">Form Pendaftaran</span>
+      <h2>Daftar Organisasi Sekarang</h2>
+      <p>
+        Isi data berikut dengan lengkap untuk mengajukan pendaftaran
+        ke organisasi yang kamu pilih.
+      </p>
+    </section>
+
+    <section class="reg-form-section">
+      <div class="reg-form-card">
+        <div class="section-head">
+          <h3>Formulir Pendaftaran</h3>
+          <p>Pastikan data yang kamu isi sudah benar.</p>
+        </div>
+
+        <% if (pesan) { %>
+          <div class="alert-box"><%= pesan %></div>
+        <% } %>
+
+        <form action="/pendaftaran" method="POST" class="reg-form">
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label>Nama Lengkap</label>
+              <input type="text" value="<%= user.nama %>" readonly>
+            </div>
+
+            <div class="form-group">
+              <label>Kelas</label>
+              <input type="text" name="kelas" placeholder="Contoh: X RPL 1" required>
+            </div>
+
+            <div class="form-group">
+              <label>Jurusan</label>
+              <input type="text" name="jurusan" placeholder="Contoh: Rekayasa Perangkat Lunak" required>
+            </div>
+
+            <div class="form-group">
+              <label>Pilih Organisasi</label>
+              <select name="organisasi" required>
+                <option value="">-- Pilih Organisasi --</option>
+                <option value="OSIS">OSIS</option>
+                <option value="Pramuka">Pramuka</option>
+                <option value="Paskibra">Paskibra</option>
+                <option value="Rohis">Rohis</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label>Alasan Mendaftar</label>
+            <textarea name="alasan" rows="6" placeholder="Tuliskan alasan kamu ingin bergabung..." required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-submit">Kirim Pendaftaran</button>
+            <a href="/pendaftaran-saya" class="btn-secondary">Lihat Pendaftaran Saya</a>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("menuDropdown").classList.toggle("show");
+    }
+
+    window.addEventListener("click", function (e) {
+      const wrap = document.querySelector(".reg-menu-area");
+      if (!wrap.contains(e.target)) {
+        document.getElementById("menuDropdown").classList.remove("show");
+      }
+    });
+  </script>
+
+</body>
+</html>

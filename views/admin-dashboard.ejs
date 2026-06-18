@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Admin</title>
+
+  <!-- WAJIB BIAR CSS MASUK -->
+  <link rel="stylesheet" href="/adminstyle.css">
+</head>
+
+<body>
+
+<%- include('partials/admin-navbar') %>
+
+<div class="admin-container">
+  <h2>Dashboard</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Total User</h3>
+      <p><%= totalUser %></p>
+    </div>
+
+    <div class="card">
+      <h3>Total Pendaftaran</h3>
+      <p><%= totalDaftar %></p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

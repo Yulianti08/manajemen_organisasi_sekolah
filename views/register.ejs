@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container-split">
+    <div class="left-panel">
+      <h1>Daftar Akun</h1>
+      <p>
+        Buat akun untuk masuk ke sistem Manajemen Anggota Organisasi Sekolah dan
+        mulai memilih organisasi yang sesuai dengan minat dan bakat kamu.
+      </p>
+      <div class="badge">Manajemen Anggota Organisasi Sekolah</div>
+    </div>
+
+    <div class="right-panel">
+      <div class="form-box">
+        <h2>Register</h2>
+        <p class="subtitle">Lengkapi data akun kamu</p>
+
+        <% if (pesan) { %>
+          <div class="error"><%= pesan %></div>
+        <% } %>
+
+        <form action="/register" method="POST">
+          <label>Nama</label>
+          <input type="text" name="nama" placeholder="Masukkan nama" required>
+
+          <label>Email</label>
+          <input type="email" name="email" placeholder="Masukkan email" required>
+
+          <label>Password</label>
+          <input type="password" name="password" placeholder="Masukkan password" required>
+
+          <button type="submit">Register</button>
+        </form>
+
+        <div class="bottom-text">
+          Sudah punya akun? <a href="/login">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

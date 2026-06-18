@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pendaftaran Saya</title>
+  <link rel="stylesheet" href="/pendaftaran.css">
+</head>
+
+<body>
+
+<main class="reg-container">
+
+  <section class="reg-hero">
+    <span class="hero-badge">Status Pendaftaran</span>
+    <h2>Pendaftaran Saya</h2>
+    <p>Lihat status diterima atau ditolak dari admin</p>
+  </section>
+
+  <section class="reg-form-section">
+    <div class="reg-form-card">
+
+      <h3>Data Pendaftaran</h3>
+
+      <% if (dataPendaftaran.length === 0) { %>
+        <p>Belum ada pendaftaran</p>
+      <% } %>
+
+      <% dataPendaftaran.forEach(item => { %>
+
+        <div style="border:1px solid #ddd; padding:15px; margin-bottom:10px; border-radius:8px;">
+
+          <h4><%= item.organisasi %></h4>
+
+          <p><b>Nama:</b> <%= item.nama %></p>
+          <p><b>Kelas:</b> <%= item.kelas %></p>
+          <p><b>Jurusan:</b> <%= item.jurusan %></p>
+
+          <p>
+            <b>Status:</b>
+
+            <% if(item.status === 'diterima'){ %>
+              <span style="color:green;">✅ Diterima</span>
+
+            <% } else if(item.status === 'ditolak'){ %>
+              <span style="color:red;">❌ Ditolak</span>
+
+            <% } else { %>
+              <span style="color:orange;">⏳ Menunggu</span>
+            <% } %>
+
+          </p>
+
+        </div>
+
+      <% }) %>
+
+      <a href="/dashboard">← Kembali</a>
+
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>

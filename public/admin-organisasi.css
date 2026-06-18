@@ -1,0 +1,294 @@
+/* ================= NAVBAR ================= */
+
+.navbar{
+  background:#243447;
+  color:white;
+  padding:22px 40px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.navbar-left h2{
+  font-size:32px;
+  font-weight:700;
+}
+
+.navbar-right{
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
+}
+
+.navbar-right a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+  position:relative;
+}
+
+.navbar-right a:hover{
+  color:#93c5fd;
+}
+
+.navbar-right a.active{
+  color:#93c5fd;
+}
+
+.navbar-right a.active::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-8px;
+
+  width:100%;
+  height:3px;
+
+  background:#60a5fa;
+  border-radius:10px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#eef2f7;
+  font-family:'Segoe UI',sans-serif;
+  color:#1e293b;
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+  width:92%;
+  max-width:1250px;
+  margin:40px auto;
+}
+
+/* ================= HEADER ================= */
+
+.top-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.top-header h1{
+  font-size:40px;
+  color:#1e3a8a;
+  margin-bottom:8px;
+}
+
+.subtitle{
+  color:#64748b;
+  font-size:15px;
+}
+
+.btn-dashboard{
+  background:#2563eb;
+  color:white;
+  text-decoration:none;
+  padding:14px 22px;
+  border-radius:14px;
+  font-weight:700;
+  transition:0.3s;
+  box-shadow:0 8px 20px rgba(37,99,235,0.2);
+}
+
+.btn-dashboard:hover{
+  background:#1d4ed8;
+  transform:translateY(-2px);
+}
+
+/* ================= FORM ================= */
+
+.form-box{
+  background:white;
+  padding:35px;
+  border-radius:28px;
+  margin-bottom:45px;
+  box-shadow:0 15px 35px rgba(15,23,42,0.08);
+
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.form-box input,
+.form-box textarea{
+  width:100%;
+  padding:16px 18px;
+  border-radius:16px;
+  border:1px solid #cbd5e1;
+  font-size:15px;
+  transition:0.3s;
+  outline:none;
+}
+
+.form-box input:focus,
+.form-box textarea:focus{
+  border-color:#2563eb;
+  box-shadow:0 0 0 4px rgba(37,99,235,0.12);
+}
+
+.form-box textarea{
+  height:150px;
+  resize:none;
+  line-height:1.7;
+}
+
+.form-box input[type="file"]{
+  background:#f8fafc;
+  padding:14px;
+}
+
+.form-box button{
+  background:linear-gradient(
+    135deg,
+    #2563eb,
+    #1d4ed8
+  );
+
+  color:white;
+  border:none;
+  padding:16px;
+  border-radius:16px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:700;
+  transition:0.3s;
+}
+
+.form-box button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(37,99,235,0.25);
+}
+
+/* ================= GRID ================= */
+
+.grid{
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(320px,1fr));
+
+  gap:28px;
+}
+
+/* ================= CARD ================= */
+
+.card{
+  background:white;
+  border-radius:26px;
+  overflow:hidden;
+  box-shadow:0 15px 35px rgba(15,23,42,0.06);
+  transition:0.35s;
+  position:relative;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+}
+
+.card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+}
+
+.card-content{
+  padding:24px;
+}
+
+.card h3{
+  font-size:26px;
+  margin-bottom:12px;
+  color:#1e3a8a;
+}
+
+.card p{
+  color:#64748b;
+  line-height:1.8;
+  font-size:15px;
+}
+
+/* ================= BUTTON AREA ================= */
+
+.card-actions{
+  display:flex;
+  gap:12px;
+  margin-top:22px;
+}
+
+.edit,
+.hapus{
+  flex:1;
+  text-align:center;
+  padding:13px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:700;
+  transition:0.3s;
+}
+
+.edit{
+  background:#2563eb;
+  color:white;
+}
+
+.edit:hover{
+  background:#1d4ed8;
+}
+
+.hapus{
+  background:#ef4444;
+  color:white;
+}
+
+.hapus:hover{
+  background:#dc2626;
+}
+
+/* ================= PREVIEW IMAGE ================= */
+
+.preview-img{
+  width:100%;
+  max-height:320px;
+  object-fit:cover;
+  border-radius:18px;
+  border:1px solid #dbeafe;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  .top-header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .top-header h1{
+    font-size:32px;
+  }
+
+  .form-box{
+    padding:25px;
+  }
+
+  .card h3{
+    font-size:22px;
+  }
+
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Detail Kegiatan
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="/detail-kegiatan.css"
+  >
+
+</head>
+
+<body>
+
+  <header class="detail-topbar">
+
+    <div class="detail-topbar-inner">
+
+      <div class="detail-brand">
+
+        <img
+          src="/logo.png"
+          alt="Logo"
+          class="detail-logo"
+        >
+
+        <div>
+
+          <h2>
+            SMK BINA LATIH KARYA
+          </h2>
+
+          <span>
+            Website Organisasi Sekolah
+          </span>
+
+        </div>
+
+      </div>
+
+      <a
+        href="/kegiatan"
+        class="back-btn"
+      >
+        ← Kembali
+      </a>
+
+    </div>
+
+  </header>
+
+  <main class="detail-wrapper">
+
+    <div class="detail-card">
+
+      <span class="label-org">
+        <%= detailKegiatan.organisasi %>
+      </span>
+
+      <h1>
+        <%= detailKegiatan.judul %>
+      </h1>
+
+      <p class="tanggal">
+        📅
+        <%= detailKegiatan.tanggal %>
+      </p>
+
+      <p class="deskripsi">
+        <%= detailKegiatan.deskripsi %>
+      </p>
+
+      <div class="gallery">
+
+        <% if(detailKegiatan.gambar && detailKegiatan.gambar.length > 0){ %>
+
+          <% detailKegiatan.gambar.forEach(function(foto){ %>
+
+            <div class="gallery-item">
+
+              <img
+                src="<%= foto %>"
+                alt="Foto Kegiatan"
+              >
+
+            </div>
+
+          <% }) %>
+
+        <% } else { %>
+
+          <div class="empty-gallery">
+
+            <p>
+              Belum ada foto kegiatan.
+            </p>
+
+          </div>
+
+        <% } %>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</body>
+</html>

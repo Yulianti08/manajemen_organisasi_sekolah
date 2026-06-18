@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Kegiatan Organisasi</title>
+
+  <link rel="stylesheet" href="/kegiatan.css">
+
+</head>
+
+<body>
+
+  <header class="kg-topbar">
+
+    <div class="kg-topbar-inner">
+
+      <div class="kg-brand">
+
+        <img
+          src="/logo.png"
+          alt="Logo"
+          class="kg-logo"
+        >
+
+        <div>
+
+          <h1>
+            SMK BINA LATIH KARYA
+          </h1>
+
+          <span>
+            Website Organisasi Sekolah
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="kg-menu-area">
+
+        <button
+          class="menu-toggle"
+          onclick="toggleMenu()"
+        >
+          ☰
+        </button>
+
+        <div
+          class="dropdown-menu"
+          id="menuDropdown"
+        >
+
+          <a href="/dashboard">
+            Beranda
+          </a>
+
+          <a href="/profil">
+            Profil Saya
+          </a>
+
+          <a href="/organisasi">
+            Organisasi
+          </a>
+
+          <a href="/kegiatan">
+            Kegiatan
+          </a>
+
+          <a href="/pendaftaran">
+            Pendaftaran
+          </a>
+
+          <a href="/pendaftaran-saya">
+            Pendaftaran Saya
+          </a>
+
+          <a
+            href="/logout"
+            class="logout"
+          >
+            Logout
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <nav class="kg-nav">
+
+    <div class="kg-nav-inner">
+
+      <a href="/dashboard">
+        Beranda
+      </a>
+
+      <a href="/organisasi">
+        Organisasi
+      </a>
+
+      <a
+        href="/kegiatan"
+        class="active"
+      >
+        Kegiatan
+      </a>
+
+      <a href="/pendaftaran">
+        Pendaftaran
+      </a>
+
+    </div>
+
+  </nav>
+
+  <main class="kg-container">
+
+    <section class="kg-hero">
+
+      <span class="hero-badge">
+        Kegiatan Sekolah
+      </span>
+
+      <h2>
+        Daftar Kegiatan Organisasi
+      </h2>
+
+      <p>
+        Berikut adalah beberapa kegiatan organisasi sekolah
+        yang dapat diikuti oleh siswa untuk mengembangkan
+        minat, bakat, disiplin, dan kerja sama.
+      </p>
+
+    </section>
+
+    <section class="kg-section">
+
+      <div class="section-head">
+
+        <h3>
+          Kegiatan Terbaru
+        </h3>
+
+        <p>
+          Dokumentasi kegiatan dari berbagai organisasi sekolah.
+        </p>
+
+      </div>
+
+      <div class="kg-grid">
+
+        <% if(dataKegiatan.length > 0){ %>
+
+          <% dataKegiatan.forEach(function(kegiatan){ %>
+
+            <a
+              href="/kegiatan/<%= kegiatan._id %>"
+              class="kg-link"
+            >
+
+              <div class="kg-card">
+
+                <% if(
+                  kegiatan.gambar &&
+                  kegiatan.gambar.length > 0
+                ){ %>
+
+                  <img
+                    src="<%= kegiatan.gambar[0] %>"
+                    alt="<%= kegiatan.judul %>"
+                    class="kg-main-image"
+                  >
+
+                <% } else { %>
+
+                  <img
+                    src="/logo.png"
+                    alt="Default"
+                    class="kg-main-image"
+                  >
+
+                <% } %>
+
+                <div class="kg-content">
+
+                  <span class="kg-label">
+                    <%= kegiatan.organisasi %>
+                  </span>
+
+                  <h4>
+                    <%= kegiatan.judul %>
+                  </h4>
+
+                  <p>
+                    <%= kegiatan.deskripsi.substring(0, 140) %>...
+                  </p>
+
+                  <% if(kegiatan.tanggal){ %>
+
+                    <div class="kg-date">
+                      📅 <%= kegiatan.tanggal %>
+                    </div>
+
+                  <% } %>
+
+                </div>
+
+              </div>
+
+            </a>
+
+          <% }) %>
+
+        <% } else { %>
+
+          <div class="kg-empty">
+
+            <p>
+              Belum ada kegiatan organisasi.
+            </p>
+
+          </div>
+
+        <% } %>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+
+    function toggleMenu() {
+
+      document
+      .getElementById("menuDropdown")
+      .classList.toggle("show");
+
+    }
+
+    window.addEventListener("click", function(e) {
+
+      const area =
+      document.querySelector(".kg-menu-area");
+
+      if (!area.contains(e.target)) {
+
+        document
+        .getElementById("menuDropdown")
+        .classList.remove("show");
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>

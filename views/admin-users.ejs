@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Users</title>
+
+  <!-- WAJIB -->
+  <link rel="stylesheet" href="/adminstyle.css">
+</head>
+
+<body>
+
+<%- include('partials/admin-navbar') %>
+
+<div class="admin-container">
+  <h2>Data Users</h2>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if(users.length === 0){ %>
+          <tr>
+            <td colspan="2">Belum ada user</td>
+          </tr>
+        <% } %>
+
+        <% users.forEach(u => { %>
+          <tr>
+            <td><%= u.nama %></td>
+            <td><%= u.email %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Organisasi</title>
+
+  <link rel="stylesheet" href="/organisasi.css">
+
+</head>
+
+<body>
+
+  <header class="org-topbar">
+
+    <div class="org-topbar-inner">
+
+      <div class="org-brand">
+
+        <img
+          src="/logo.png"
+          alt="Logo Sekolah"
+          class="org-logo"
+        >
+
+        <div class="org-brand-text">
+
+          <h1>
+            SMK BINA LATIH KARYA
+          </h1>
+
+          <span>
+            Website Organisasi Sekolah
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="org-menu-area">
+
+        <button
+          class="menu-toggle"
+          onclick="toggleMenu()"
+        >
+          ☰
+        </button>
+
+        <div
+          class="dropdown-menu"
+          id="menuDropdown"
+        >
+
+          <a href="/dashboard">
+            Beranda
+          </a>
+
+          <a href="/profil">
+            Profil Saya
+          </a>
+
+          <a href="/edit-profil">
+            Edit Profil
+          </a>
+
+          <a href="/organisasi">
+            Organisasi
+          </a>
+
+          <a href="/kegiatan">
+            Kegiatan
+          </a>
+
+          <a href="/pendaftaran">
+            Pendaftaran
+          </a>
+
+          <a
+            href="/logout"
+            class="logout"
+          >
+            Logout
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <nav class="org-nav">
+
+    <div class="org-nav-inner">
+
+      <a href="/dashboard">
+        Beranda
+      </a>
+
+      <a
+        href="/organisasi"
+        class="active"
+      >
+        Organisasi
+      </a>
+
+      <a href="/kegiatan">
+        Kegiatan
+      </a>
+
+      <a href="/pendaftaran">
+        Pendaftaran
+      </a>
+
+    </div>
+
+  </nav>
+
+  <main class="org-container">
+
+    <section class="org-hero">
+
+      <div class="org-hero-content">
+
+        <span class="hero-badge">
+          Daftar Organisasi
+        </span>
+
+        <h2>
+          Pilih organisasi yang sesuai
+          dengan minat dan bakatmu
+        </h2>
+
+        <p>
+          Temukan organisasi yang cocok
+          untuk mengembangkan kemampuan,
+          kepemimpinan, dan pengalamanmu.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a
+            href="#list-organisasi"
+            class="btn-red"
+          >
+            Lihat Organisasi
+          </a>
+
+          <a
+            href="/pendaftaran-saya"
+            class="btn-blue"
+          >
+            Pendaftaran Saya
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section
+      id="list-organisasi"
+      class="org-section"
+    >
+
+      <div class="section-head">
+
+        <h3>
+          Organisasi Tersedia
+        </h3>
+
+        <p>
+          Pilih organisasi yang sesuai
+          dengan minatmu.
+        </p>
+
+      </div>
+
+      <div class="org-grid">
+
+        <% if(dataOrganisasi.length > 0){ %>
+
+          <% dataOrganisasi.forEach(function(org){ %>
+
+            <div class="org-card">
+
+              <div class="org-card-image">
+
+                <img
+                  src="<%= org.gambar %>"
+                  alt="<%= org.nama %>"
+                >
+
+              </div>
+
+              <div class="org-card-content">
+
+                <div class="org-card-top">
+
+                  <div>
+
+                    <h4>
+                      <%= org.nama %>
+                    </h4>
+
+                    <span class="org-subtitle">
+                      Organisasi Sekolah
+                    </span>
+
+                  </div>
+
+                </div>
+
+                <p class="org-desc">
+                  <%= org.deskripsi %>
+                </p>
+
+                <div class="org-actions">
+
+                  <a
+                    href="/organisasi/<%= org.nama %>"
+                    class="btn-blue small-btn"
+                  >
+                    Lihat Kegiatan
+                  </a>
+
+                  <a
+                    href="/pendaftaran?org=<%= org.nama %>"
+                    class="btn-red small-btn"
+                  >
+                    Daftar
+                  </a>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          <% }) %>
+
+        <% } else { %>
+
+          <div class="empty-org">
+
+            <h3>
+              Belum ada organisasi
+            </h3>
+
+            <p>
+              Admin belum menambahkan
+              organisasi.
+            </p>
+
+          </div>
+
+        <% } %>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+
+    function toggleMenu(){
+
+      document
+      .getElementById("menuDropdown")
+      .classList.toggle("show");
+
+    }
+
+    window.addEventListener("click", function(e){
+
+      const wrap =
+      document.querySelector(".org-menu-area");
+
+      if(!wrap.contains(e.target)){
+
+        document
+        .getElementById("menuDropdown")
+        .classList.remove("show");
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>

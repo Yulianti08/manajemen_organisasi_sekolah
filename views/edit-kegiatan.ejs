@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Edit Kegiatan
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="/admin-kegiatan.css"
+  >
+
+</head>
+
+<body>
+
+  <header class="admin-topbar">
+
+    <div class="topbar-flex">
+
+      <h1>
+        Edit Kegiatan
+      </h1>
+
+      <a
+        href="/admin/kegiatan"
+        class="btn-kembali"
+      >
+        ← Kembali
+      </a>
+
+    </div>
+
+  </header>
+
+  <div class="admin-container">
+
+    <div class="admin-card">
+
+      <h2 class="admin-title">
+        Form Edit Kegiatan
+      </h2>
+
+      <p class="admin-subtitle">
+        Ubah data kegiatan organisasi.
+      </p>
+
+      <form
+        action="/admin/update-kegiatan/<%= kegiatan._id %>"
+        method="POST"
+        enctype="multipart/form-data"
+        class="admin-form"
+      >
+
+        <div class="form-group">
+
+          <label>
+            Organisasi
+          </label>
+
+          <select
+            name="organisasi"
+            required
+          >
+
+            <% dataOrganisasi.forEach(function(org){ %>
+
+              <option
+                value="<%= org.nama %>"
+
+                <%= kegiatan.organisasi === org.nama ? 'selected' : '' %>
+              >
+
+                <%= org.nama %>
+
+              </option>
+
+            <% }) %>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>
+            Judul Kegiatan
+          </label>
+
+          <input
+            type="text"
+            name="judul"
+            value="<%= kegiatan.judul %>"
+            required
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label>
+            Tanggal
+          </label>
+
+          <input
+            type="date"
+            name="tanggal"
+            value="<%= kegiatan.tanggal %>"
+          >
+
+        </div>
+
+        <div
+          class="form-group"
+          style="grid-column:1/-1;"
+        >
+
+          <label>
+            Deskripsi
+          </label>
+
+          <textarea
+            name="deskripsi"
+            required
+          ><%= kegiatan.deskripsi %></textarea>
+
+        </div>
+
+        <div
+          class="form-group"
+          style="grid-column:1/-1;"
+        >
+
+          <label>
+            Upload Foto Baru
+          </label>
+
+          <input
+            type="file"
+            name="gambar"
+            multiple
+          >
+
+        </div>
+
+        <div
+          class="form-group"
+          style="grid-column:1/-1;"
+        >
+
+          <button
+            type="submit"
+            class="btn-submit"
+          >
+            Simpan Perubahan
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

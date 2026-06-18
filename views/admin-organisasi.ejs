@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>
+    Admin Organisasi
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="/admin-organisasi.css"
+  >
+
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <header class="navbar">
+
+    <div class="navbar-left">
+
+      <h2>
+        Admin Panel
+      </h2>
+
+    </div>
+
+    <div class="navbar-right">
+
+      <a href="/admin">
+        Dashboard
+      </a>
+
+      <a href="/admin/pendaftaran">
+        Pendaftaran
+      </a>
+
+      <a href="/admin/users">
+        Users
+      </a>
+
+      <a
+        href="/admin/organisasi"
+        class="active"
+      >
+        Organisasi
+      </a>
+
+      <a href="/admin/kegiatan">
+        Kegiatan
+      </a>
+
+      <a href="/logout">
+        Logout
+      </a>
+
+    </div>
+
+  </header>
+
+  <!-- ================= CONTAINER ================= -->
+
+  <div class="container">
+
+    <div class="top-header">
+
+      <div>
+
+        <h1>
+          Kelola Organisasi
+        </h1>
+
+        <p class="subtitle">
+          Tambah, edit, dan hapus organisasi sekolah.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- ================= FORM ================= -->
+
+    <form
+      action="/admin/tambah-organisasi"
+      method="POST"
+      enctype="multipart/form-data"
+      class="form-box"
+    >
+
+      <input
+        type="text"
+        name="nama"
+        placeholder="Nama Organisasi"
+        required
+      >
+
+      <textarea
+        name="deskripsi"
+        placeholder="Deskripsi Organisasi"
+        required
+      ></textarea>
+
+      <input
+        type="file"
+        name="gambar"
+        required
+      >
+
+      <button type="submit">
+        + Tambah Organisasi
+      </button>
+
+    </form>
+
+    <!-- ================= GRID ================= -->
+
+    <div class="grid">
+
+      <% dataOrganisasi.forEach(item => { %>
+
+        <div class="card">
+
+          <img
+            src="<%= item.gambar %>"
+            alt="<%= item.nama %>"
+          >
+
+          <div class="card-content">
+
+            <h3>
+              <%= item.nama %>
+            </h3>
+
+            <p>
+              <%= item.deskripsi %>
+            </p>
+
+            <div class="card-actions">
+
+              <a
+                href="/admin/edit-organisasi/<%= item._id %>"
+                class="edit"
+              >
+                ✏️ Edit
+              </a>
+
+              <a
+                href="/admin/hapus-organisasi/<%= item._id %>"
+                class="hapus"
+                onclick="return confirm('Yakin ingin menghapus organisasi ini?')"
+              >
+                🗑 Hapus
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      <% }) %>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

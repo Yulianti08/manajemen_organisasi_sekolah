@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Admin</title>
+  <link rel="stylesheet" href="/style.css">
+
+  <style>
+    body {
+      background: #f4f6fb;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .admin-container {
+      max-width: 1100px;
+      margin: 40px auto;
+    }
+
+    .admin-header {
+      margin-bottom: 30px;
+    }
+
+    .admin-header h2 {
+      color: #2c3e50;
+    }
+
+    .admin-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table th, table td {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+
+    th {
+      background: #3f6fd8;
+      color: white;
+    }
+
+    .btn-hapus {
+      background: red;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .btn-hapus:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+<body>
+
+<div class="admin-container">
+
+  <div class="admin-header">
+    <h2>Dashboard Admin</h2>
+    <p>Data Pendaftaran Siswa</p>
+  </div>
+
+  <div class="admin-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Kelas</th>
+          <th>Jurusan</th>
+          <th>Organisasi</th>
+          <th>Alasan</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(item => { %>
+          <tr>
+            <td><%= item.nama %></td>
+            <td><%= item.kelas %></td>
+            <td><%= item.jurusan %></td>
+            <td><%= item.organisasi %></td>
+            <td><%= item.alasan %></td>
+            <td>
+              <a href="/admin/hapus/<%= item._id %>" class="btn-hapus">Hapus</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>

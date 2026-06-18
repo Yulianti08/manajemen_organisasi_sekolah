@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Edit Organisasi</title>
+
+  <link
+    rel="stylesheet"
+    href="/admin-organisasi.css"
+  >
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="top-header">
+
+      <div>
+
+        <h1>
+          Edit Organisasi
+        </h1>
+
+        <p class="subtitle">
+          Ubah data organisasi sekolah.
+        </p>
+
+      </div>
+
+      <a
+        href="/admin/organisasi"
+        class="btn-dashboard"
+      >
+        ← Kembali
+      </a>
+
+    </div>
+
+    <form
+      action="/admin/update-organisasi/<%= organisasi._id %>"
+      method="POST"
+      enctype="multipart/form-data"
+      class="form-box"
+    >
+
+      <input
+        type="text"
+        name="nama"
+        value="<%= organisasi.nama %>"
+        required
+      >
+
+      <textarea
+        name="deskripsi"
+        required
+      ><%= organisasi.deskripsi %></textarea>
+
+      <img
+        src="<%= organisasi.gambar %>"
+        class="preview-img"
+      >
+
+      <input
+        type="file"
+        name="gambar"
+      >
+
+      <button type="submit">
+        Simpan Perubahan
+      </button>
+
+    </form>
+
+  </div>
+
+</body>
+</html>
